@@ -95,50 +95,7 @@ def respond(voice_data):
     elif 'hello' in voice_data:
         wish()
 
-    elif 'what is your name' in voice_data:
-        reply('My name is Proton!')
-
-    elif 'how are you' in voice_data :
-            reply("I am fine, Thank you")   
     
-    elif 'fine' in voice_data or "good" in voice_data:
-            reply("It's good to know that your fine")
-    
-    elif 'what can you do for me' in voice_data:
-          reply('I can play songs, tell time, and help you go with wikipedia')
-
-    elif "calculate" in voice_data:
-             
-            app_id = "Wolframalpha api id"
-            client = wolframalpha.Client(app_id)
-            indx = voice_data.lower().split().index('calculate')
-            voice_data = voice_data.split()[indx + 1:]
-            res = client.voice_data(' '.join(voice_data))
-            answer = next(res.results).text
-            print("The answer is " + answer)
-            reply("The answer is " + answer)
-			
-    elif 'open googlr' in voice_data:
-            webbrowser.open_new_tab("https://www.google.com")
-            reply("Google is open")
-            time.sleep(5)
-
-    elif 'joke' in voice_data:
-            reply(pyjokes.get_joke())
-
-    elif "change my name to" in voice_data:
-            voice_data = voice_data.replace("change my name to", "")
-            assname = voice_data
-
-    elif "who i am" in voice_data:
-            reply("If you talk then definitely your human.")
- 
-    elif "why you came to world" in voice_data:
-            reply("Thanks to  kumar Gaurav. further It's a secret")
-
-    elif "who made you" in voice_data or "who created you" in voice_data:
-            reply("I have been created by  kumar Gaurav.")
-			
     
     elif 'date' in voice_data:
         reply(today.strftime("%B %d, %Y"))
@@ -299,12 +256,106 @@ def respond(voice_data):
     #        webbrowser.open("https://www.google.nl/maps/place/"+location)
  
     elif "i love you" in voice_data:
-           reply("I already have a girlfriend")
+           reply("Im not intrested ,thanks")
            
     elif "wikipedia" in voice_data:
-            webbrowser.open("wikipedia.com")         
+            webbrowser.open("wikipedia.com")  
+
+    elif 'what is your name' in voice_data:
+        reply('My name is Proton!')
+
+    elif 'how are you' in voice_data :
+            reply("I am fine, Thank you")   
+    
+    
+    elif 'what can you do for me' in voice_data:
+          reply('I can play songs, tell time, and help you go with wikipedia')
+
+    elif "calculate" in voice_data:
+             
+            app_id = "Wolframalpha api id"
+            client = wolframalpha.Client(app_id)
+            indx = voice_data.lower().split().index('calculate')
+            voice_data = voice_data.split()[indx + 1:]
+            res = client.voice_data(' '.join(voice_data))
+            answer = next(res.results).text
+            print("The answer is " + answer)
+            reply("The answer is " + answer)
+ 
+
+    elif 'whats your favorite color' in voice_data:
+            reply("my favorite color is black")
+
+
+    elif "which is ur favorite quote" in voice_data:
+            reply("nothing is impossible to achieve.")
+ 
+    elif "can we count stars in night" in voice_data:
+            reply("no we cant count")
+
+    elif "how many days in a year" in voice_data:
+            reply(" we have 365 days in a year.")
+
+    elif "how many days in a week" in voice_data:
+            reply("7 days in a week")
+
+    elif "which laptop is best for students" in voice_data:
+            reply("hp is best for students")
+
+    elif "what is your favorite sport" in voice_data:
+            reply("football is my favorite sport")
+
+    elif "what is the principle you follow in life" in voice_data:
+            reply("Be kind stay grounded as much as possible") 
+
+    elif "who is your favorite actress" in voice_data:
+            reply("zendaya is my favorite actress")
+
+
+    elif "which is your favorite team in IPL" in voice_data:
+            reply(" its obvious RCB royal challengers banglore")
+
+    elif "what is your favorite cuisines" in voice_data:
+            reply("italian is my favorite")
+
+    elif "what is favorite subject" in voice_data:
+            reply("histroy is my favorite subject")
+
+    elif "what is your team mates name " in voice_data:
+            reply("they are gaurav,chaitra,divya")
+
+    elif "who is the PM of india " in voice_data:
+            reply("narendra modi is pm of india")
+
+    elif "what is the value of pi" in voice_data:
+            reply("3.14 is value of pi")
+
+    elif "do you have any pets" in voice_data:
+            reply(" i love dogs, i have dog, i hate cats")
+
+    elif "do you like pizza" in voice_data:
+            reply(" yes i love pizza")
+
+    elif "do you belive in magic" in voice_data:
+            reply(" yes i belive in magic")
+
+    elif "who is founder on siddaganga mutt" in voice_data:
+            reply(" sri haradanahalli gosala siddeshwara swami is founder of siddaganga mutt")
+
+    elif "which is your favorite movie" in voice_data:
+            reply(" hidden figures is my favorite movie")
+
+    elif "what is your favorite fruit" in voice_data:
+            reply("my favorite fruit is grapes")
+
+    elif "which is largest country in world" in voice_data:
+            reply("russia is largest country in world")
+			             
+			             
     else: 
         reply('I am not functioned to do this !')
+
+    
 
 # ------------------Driver Code--------------------
 
