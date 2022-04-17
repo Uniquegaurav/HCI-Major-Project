@@ -18,7 +18,7 @@ import wikipedia
 import app
 from threading import Thread
 
-
+# hi there
 # -------------Object Initialization---------------
 today = date.today()
 r = sr.Recognizer()
