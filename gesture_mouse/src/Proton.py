@@ -8,6 +8,7 @@ from pynput.keyboard import Key, Controller
 import pyautogui
 import sys
 import pyjokes
+import wolframalpha 
 import os
 from os import listdir
 from os.path import isfile, join
@@ -15,10 +16,11 @@ import smtplib
 import wikipedia
 #import Gesture_Controller
 #import Gesture_Controller_Gloved as Gesture_Controller
+from selenium import webdriver # to control browser operations
 import app
 from threading import Thread
 
-# hi there
+
 # -------------Object Initialization---------------
 today = date.today()
 r = sr.Recognizer()
@@ -95,7 +97,48 @@ def respond(voice_data):
 
     elif 'what is your name' in voice_data:
         reply('My name is Proton!')
-        
+
+    elif 'how are you' in voice_data :
+            reply("I am fine, Thank you")   
+    
+    elif 'fine' in voice_data or "good" in voice_data:
+            reply("It's good to know that your fine")
+    
+    elif 'what can you do for me' in voice_data:
+          reply('I can play songs, tell time, and help you go with wikipedia')
+
+    elif "calculate" in voice_data:
+             
+            app_id = "Wolframalpha api id"
+            client = wolframalpha.Client(app_id)
+            indx = voice_data.lower().split().index('calculate')
+            voice_data = voice_data.split()[indx + 1:]
+            res = client.voice_data(' '.join(voice_data))
+            answer = next(res.results).text
+            print("The answer is " + answer)
+            reply("The answer is " + answer)
+			
+    elif 'open googlr' in voice_data:
+            webbrowser.open_new_tab("https://www.google.com")
+            reply("Google is open")
+            time.sleep(5)
+
+    elif 'joke' in voice_data:
+            reply(pyjokes.get_joke())
+
+    elif "change my name to" in voice_data:
+            voice_data = voice_data.replace("change my name to", "")
+            assname = voice_data
+
+    elif "who i am" in voice_data:
+            reply("If you talk then definitely your human.")
+ 
+    elif "why you came to world" in voice_data:
+            reply("Thanks to  kumar Gaurav. further It's a secret")
+
+    elif "who made you" in voice_data or "who created you" in voice_data:
+            reply("I have been created by  kumar Gaurav.")
+			
     
     elif 'date' in voice_data:
         reply(today.strftime("%B %d, %Y"))
