@@ -283,74 +283,120 @@ def respond(voice_data):
             reply("The answer is " + answer)
  
 
-    elif 'whats your favorite color' in voice_data:
-            reply("my favorite color is black")
+    elif "what is your favourite bird" in voice_data:
+            reply("my favorite bird is peacock, which is India's national bird")
 
 
     elif "which is ur favorite quote" in voice_data:
-            reply("nothing is impossible to achieve.")
+            reply("my favorite quote is a good book is like hundred good friends ,but a good friend is like a library")
  
-    elif "can we count stars in night" in voice_data:
-            reply("no we cant count")
+    elif "who is the most popular althlete in India" in voice_data:
+            reply("virat kohli is the most popular althlete in india, he is an Indian cricketer ")
 
-    elif "how many days in a year" in voice_data:
-            reply(" we have 365 days in a year.")
+    elif "what is best peice of advice for students" in voice_data:
+            reply(" the best peice of advice for students wil be Dreams remain dreams until you take action.")
 
     elif "how many days in a week" in voice_data:
-            reply("7 days in a week")
+            reply("one week hold for 7 days")
 
     elif "which laptop is best for students" in voice_data:
-            reply("hp is best for students")
+            reply("dell laptops are recoginzed as best laptops for students, its powreded by an 11th Gen Intel core i7 processor.")
 
-    elif "what is your favorite sport" in voice_data:
-            reply("football is my favorite sport")
+    elif "what is most popular sport in india " in voice_data:
+            reply("cricket has been most popular sport in inida, the country has hosted and won the cricket world cup on mutiple occasions.")
 
-    elif "what is the principle you follow in life" in voice_data:
-            reply("Be kind stay grounded as much as possible") 
+    elif "what is the  best principle to follow in life" in voice_data:
+            reply("here the information from thrirdcalotogue -1.attitude is everything 2. be of service to others ") 
 
-    elif "who is your favorite actress" in voice_data:
-            reply("zendaya is my favorite actress")
+    elif "who is the most popular actor in india" in voice_data:
+            reply("here is the information from javatpoint Shah rukh khan ,he is the most popluar actor in india")
 
+    elif "who is the most popular soccer player in world" in voice_data:
+            reply(" the most popular soccer players are cristiano ronaldo, lionel messi, neymar jr.")
 
-    elif "which is your favorite team in IPL" in voice_data:
-            reply(" its obvious RCB royal challengers banglore")
+    elif "what is popluar cuisine" in voice_data:
+            reply("italian food is officially the most popluar cusine in world, an international yougov study asked more than 25,000 people across 24 countires.")
 
-    elif "what is your favorite cuisines" in voice_data:
-            reply("italian is my favorite")
-
-    elif "what is favorite subject" in voice_data:
-            reply("histroy is my favorite subject")
+    elif "what is the most likely subject for students" in voice_data:
+            reply("mathematics was the most popluar subject overall , selected by 38% of worldwide in the analyisis given by cambrigde university")
 
     elif "what is your team mates name " in voice_data:
             reply("they are gaurav,chaitra,divya")
 
     elif "who is the PM of india " in voice_data:
-            reply("narendra modi is pm of india")
+            reply("according to wikkipedia, narendra modi is the prime minister of india,who is head of government of republic of india")
 
     elif "what is the value of pi" in voice_data:
-            reply("3.14 is value of pi")
+            reply("the value of pi is 3.142")
 
-    elif "do you have any pets" in voice_data:
-            reply(" i love dogs, i have dog, i hate cats")
+    elif "what the benefits of using social media" in voice_data:
+            reply(" accoridng to survey , social media also helps you to build your brand because it enables sharing")
 
-    elif "do you like pizza" in voice_data:
-            reply(" yes i love pizza")
+    elif "what is the most popular pizza in the world" in voice_data:
+            reply(" in a poll of more than 6000 US adults,americas favorite pizza topping is pepperoni")
 
-    elif "do you belive in magic" in voice_data:
-            reply(" yes i belive in magic")
+    elif "whats the color of sky" in voice_data:
+            reply(" the earth atmosphere scatter sunlight in all directions ,blue light scatter more , this is why we see a blue sky most of time")
 
-    elif "who is founder on siddaganga mutt" in voice_data:
-            reply(" sri haradanahalli gosala siddeshwara swami is founder of siddaganga mutt")
+    elif "which is the most used gadgets in india" in voice_data:
+            reply("one plus, is a chinese consumer electronics manufactured headquartereted in shenzhen")
 
-    elif "which is your favorite movie" in voice_data:
-            reply(" hidden figures is my favorite movie")
+    elif "what is big bang theory" in voice_data:
+            reply("according to the survey by nasa , bigbang is how astronomers explain the way the universe began")
 
-    elif "what is your favorite fruit" in voice_data:
-            reply("my favorite fruit is grapes")
+    elif "does universe have center" in voice_data:
+            reply("ever since the big bang 13.7 billion years ago, no matter how we try to define and identify ,universe has no center.")
 
-    elif "which is largest country in world" in voice_data:
-            reply("russia is largest country in world")
-			             
+    elif "which is the most popluar country in the world" in voice_data:
+            reply("according to survey by novit france is the most popular country in the world")
+
+    elif "what is the color of mirror" in voice_data:
+            reply("according to bbc magezine survey as a perfect mirror reflects back all the colours comprising white light, its also white. ")
+            
+    elif "how much of our brain do we use? " in voice_data:
+            reply("according to pinterest studies from 65% 0f americans belive that we only use 10% of our brain,but this is just a myth.")   
+
+    elif "which is the most expensive flower in the world" in voice_data:
+            reply("according to wikipedia, shenzhen nongke orchid is most expensive flower in the world")
+                
+    elif "what is the resolution of the human eye?" in voice_data:
+            reply("576 megapixiles is the resolution of human eye,the digital images are made of millions of tiny tiles-like elements accoring to survey.")
+            
+    elif "which came first - the egg or the chicken?" in voice_data:
+            reply("according to the dovit survey, the egg-laying animals existed way far before the chicken came , so techincally the egg came before the chicken")
+            
+    elif "can you fire a gun in space" in voice_data:
+            reply("guns dont require oxygen to work, so vaccum of outerspace will not be a problem, we can fire a gun in space")
+            
+    elif "how much money is there in the world" in voice_data:
+            reply("well, its difficult to figure out the accurate number but this most accurated money is 75 trillion US dollars")
+            
+    elif "how much is the earth worth?" in voice_data:
+            reply("according to greg loughman, the worth of earth is 3 to 4.4 quadrillion pounds")
+            
+    elif "is time travel really possible?" in voice_data:
+            reply("based on the available theories ,we can travel in future,but still ,we dont know whether they are possible for real objects.")
+            
+    elif "how old are you" in voice_data:
+            reply(" i was launched in 2021, so im fairly young, but i learned so much i hope im wise beyond my years")
+            
+    elif "where is Georgia" in voice_data:
+            reply("according to wikipedia ,Georgia is a state in southastern region of united ststes ,borderd to north by tennessee and north carolina")
+            
+    elif "which is smartest mammal" in voice_data:
+            reply(" based on current metrices for intelligence, dolphins are one of the most intelligent animals in world")
+            
+    elif "which is the fastest animal in the world" in voice_data:
+            reply("according to wikkipedia, cheetah is capable of going from 0 to 60 miles per hr in less than three seconds, cheetah is considered the fatest land animal in the world")
+            
+    elif "how many continents in the world" in voice_data:
+            reply("here's the information from worldmeta, there are 7 continents in the world, adn asia is the biggest continent")
+            
+    elif "which is the best pet for humans" in voice_data:
+            reply("here is the information from petscry , accordingly dogs and cats are considered to be best pet for humans")
+            
+    elif "how much water should be consumed by human in a day" in voice_data:
+            reply("according to us, national academics of science , it was determined that an adequate daily fluid intake is about 15.5 cups of fluids a day")
 			             
     else: 
         reply('I am not functioned to do this !')
