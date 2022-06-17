@@ -13,19 +13,20 @@ from os import listdir
 from os.path import isfile, join
 import smtplib
 import wikipedia
-#import Gesture_Controller
-#import Gesture_Controller_Gloved as Gesture_Controller
+import Gesture_Controller
 import app
 from threading import Thread
+from constants.constants import *
 
 
 # -------------Object Initialization---------------
 today = date.today()
 r = sr.Recognizer()
 keyboard = Controller()
-engine = pyttsx3.init('sapi5')
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
+# engine.setProperty('rate', 150)
+# engine.setProperty('volume', 0.7)
 engine.setProperty('voice', voices[0].id)
 
 # ----------------Variables------------------------
@@ -37,7 +38,6 @@ is_awake = True  #Bot status
 # ------------------Functions----------------------
 def reply(audio):
     app.ChatBot.addAppMsg(audio)
-
     print(audio)
     engine.say(audio)
     engine.runAndWait()
@@ -53,7 +53,7 @@ def wish():
     else:
         reply("Good Evening!")  
         
-    reply("I am Proton, how may I help you?")
+    reply("I am Nova, how may I help you?")
 
 # Set Microphone parameters
 with sr.Microphone() as source:   
@@ -80,21 +80,20 @@ def record_audio():
 # Executes Commands (input: string)
 def respond(voice_data):
     global file_exp_status, files, is_awake, path
-    print(voice_data)
-    voice_data.replace('proton','')
-    app.eel.addUserMsg(voice_data)
-
+    voice_data.replace('nova','')
+    if voice_data != None and voice_data != "" :
+         app.eel.addUserMsg(voice_data)
     if is_awake==False:
         if 'wake up' in voice_data:
             is_awake = True
             wish()
 
-    # STATIC CONTROLS
+    # STATIC CONTROL
     elif 'hello' in voice_data:
         wish()
 
     elif 'what is your name' in voice_data:
-        reply('My name is Proton!')
+        reply('My name is Nova!')
         
     
     elif 'date' in voice_data:
@@ -140,29 +139,28 @@ def respond(voice_data):
         is_awake = False
 
     elif ('exit' in voice_data) or ('terminate' in voice_data):
-        # if Gesture_Controller.GestureController.gc_mode:
-        #     Gesture_Controller.GestureController.gc_mode = 0
+        if Gesture_Controller.GestureController.gc_mode:
+            Gesture_Controller.GestureController.gc_mode = 0
         app.ChatBot.close()
-        #sys.exit() always raises SystemExit, Handle it in main loop
         sys.exit()
         
     
     # DYNAMIC CONTROLS
-    # elif 'launch gesture recognition' in voice_data:
-    #     if Gesture_Controller.GestureController.gc_mode:
-    #         reply('Gesture recognition is already active')
-    #     else:
-    #         gc = Gesture_Controller.GestureController()
-    #         t = Thread(target = gc.start)
-    #         t.start()
-    #         reply('Launched Successfully')
+    elif 'launch gesture recognition' in voice_data:
+        if Gesture_Controller.GestureController.gc_mode:
+            reply('Gesture recognition is already active')
+        else:
+            gc = Gesture_Controller.GestureController()
+            t = Thread(target = gc.start)
+            t.start()
+            reply('Launched Successfully')
 
-    # elif 'stop gesture recognition' in voice_data:
-    #     if Gesture_Controller.GestureController.gc_mode:
-    #         Gesture_Controller.GestureController.gc_mode = 0
-    #         reply('Gesture recognition Stopped')
-    #     else:
-    #         reply('Gesture recognition is already inactive')
+    elif 'stop gesture recognition' in voice_data:
+        if Gesture_Controller.GestureController.gc_mode:
+            Gesture_Controller.GestureController.gc_mode = 0
+            reply('Gesture recognition Stopped')
+        else:
+            reply('Gesture recognition is already inactive')
         
     elif 'copy' in voice_data:
         with keyboard.pressed(Key.ctrl):
@@ -226,6 +224,46 @@ def respond(voice_data):
                     print(str(counter) + ':  ' + f)
                 reply('ok')
                 app.ChatBot.addAppMsg(filestr)
+    # elif ("google" in voice_data) or ("search" in voice_data) or ("web browser" in voice_data) or ("chrome" in voice_data) or ("browser" in voice_data):
+    #     pyttsx3.speak("Opening")
+    #     pyttsx3.speak("GOOGLE CHROME")
+    #     print(".")
+    #     print(".")
+    #     os.system("chrome")
+ 
+    # elif ("start ie" in voice_data) or ("start msedge" in voice_data) or ("start edge" in voice_data):
+    #     pyttsx3.speak("Opening")
+    #     pyttsx3.speak("MICROSOFT EDGE")
+    #     print(".")
+    #     print(".")
+    #     os.system("msedge")
+ 
+    # elif ("start mote" in voice_data) or ("start notes" in voice_data) or ("start notepad" in voice_data):
+    #     pyttsx3.speak("Opening")
+    #     pyttsx3.speak("NOTEPAD")
+    #     print(".")
+    #     print(".")
+    #     os.system("Notepad")
+ 
+    # elif ("start visual studio code" in voice_data) or ("start studio code" in voice_data) or ("start visual code" in voice_data) or ("start visual studio code" in voice_data):
+    #     pyttsx3.speak("Opening")
+    #     pyttsx3.speak("Visual studio code")
+    #     print(".")
+    #     print(".")
+    #     os.system("Visual Studio Code")
+ 
+    # elif ("start android studio" in voice_data):
+    #     pyttsx3.speak("Opening")
+    #     pyttsx3.speak("Android studio")
+    #     print(".")
+    #     print(".")
+    #     os.system("Android Studio")
+ 
+    # elif "start slack" in voice_data :
+    #     pyttsx3.speak("Opening")
+    #     pyttsx3.speak("Slack")
+    #     os.system("Slack")
+
     elif 'how are you' in voice_data:
             reply("I am fine, Thank you")
             reply("How are you, Sir")
@@ -261,40 +299,46 @@ def respond(voice_data):
     elif "wikipedia" in voice_data:
             webbrowser.open("wikipedia.com")         
     else: 
-        reply('I am not functioned to do this !')
+        if master_control and voice_data == "":
+            pass
+        else :
+            reply('I am not functioned to do this !')
 
 # ------------------Driver Code--------------------
+    
+   
+
 
 t1 = Thread(target = app.ChatBot.start)
 t1.start()
-
-# Lock main thread until Chatbot has started
 while not app.ChatBot.started:
     time.sleep(0.5)
-
 wish()
 voice_data = None
+master_control = False
+
 while True:
     if app.ChatBot.isUserInput():
-        #take input from GUI
         voice_data = app.ChatBot.popUserInput()
     else:
-        #take input from Voice
         voice_data = record_audio()
         print(voice_data)
-    #process voice_data
-    print(voice_data)
-    if 'proton' in voice_data:
-        try:
-            #Handle sys.exit()
-            respond(voice_data)
-        except SystemExit:
-            reply("Exit Successfull")
-            break
-        except:
-            #some other exception got raised
-            print("EXCEPTION raised while closing.") 
-            break
+    if any(value in voice_data for value in NOVA) or master_control:  
+        if MASTER_CONTROL in voice_data and DEACTIVATE in voice_data :
+             master_control = False
+             reply("Master control deactivated")
+        elif MASTER_CONTROL in voice_data and ACTIVATE in voice_data :
+             master_control = True
+             reply("Master control activated")     
+        else : 
+            try:
+                respond(voice_data)
+            except SystemExit:
+                reply("Exit Successfull")
+                break
+            except:
+                print("EXCEPTION raised while closing.") 
+                break
         
 
 

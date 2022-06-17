@@ -9,7 +9,7 @@ div.convFormDynamic {
     margin: 10px auto 15px;
     padding: 0 !important;
     position: relative;
-    /* box-shadow: 0 0 5px 5px rgba(222, 222, 222, 0.4); */
+    box-shadow: 0 0 1px 1px rgba(78, 175, 184, 0.4);
 }
 
 div.convFormDynamic input.userInputDynamic {
@@ -146,7 +146,7 @@ div.conv-form-wrapper  div#messages div.message.to {
     border-top-left-radius: 0;
 }
 div.conv-form-wrapper div#messages div.message.from {
-    background: linear-gradient(to left, #38ff84 0%, #98fbbe 100%);
+    background: linear-gradient(to left, #899472 0%, #b8a56e 98%);
     color: #000000;
     border-top-right-radius: 0;
 }
@@ -227,6 +227,7 @@ span.clear {
   padding-bottom: 25px;
   padding-right: 20px;
   text-align: right;
+  /* border: 1px solid rgb(28, 34, 47); */
 }
 .logo{
 	position: fixed;
@@ -238,7 +239,7 @@ span.clear {
 
 body {
     overflow: hidden;
-    background: #1a1a2e;
+    background: #cbe5ef;
 }
 
 
@@ -248,14 +249,14 @@ body {
 
   width:100%;
   margin-top: 12px;
-  margin-left: 12px;
+  margin-left: 8px;
   text-align: center;
 
   color:#313131;
-  font-size:16px;
+  font-size:14.5px;
   font-weight: bold;
   position: absolute;
-  -webkit-animation:colorchange 20s infinite alternate;
+  -webkit-animation:colorchange 30s infinite alternate;
 
 
 }
@@ -263,55 +264,55 @@ body {
 @-webkit-keyframes colorchange {
   0% {
 
-    color: lightblue;
+    color: rgb(165, 212, 228);
   }
 
   10% {
 
-    color: #8e44ad;
+    color: #845797;
   }
 
   20% {
 
-    color: #1abc9c;
+    color: #76c7b7;
   }
 
   30% {
 
-    color: #7afad8;
+    color: #814a8a;
   }
 
   40% {
 
-    color: lightblue;
+    color: rgb(136, 165, 158);
   }
 
   50% {
 
-    color: #70b8ff;
+    color: #b2d9ff;
   }
 
   60% {
 
-    color: lightblue;
+    color: rgb(31, 83, 167);
   }
 
   70% {
 
-    color: #2980b9;
+    color: #b794ee;
   }
   80% {
 
-    color: #67d962;
+    color: #dc83d3;
   }
 
   90% {
 
-    color: #62c7d9;
+    color: #6fd8eb;
   }
 
   100% {
 
-    color: #9ee84f;
+    color: #d0d4d6;
   }
 }
