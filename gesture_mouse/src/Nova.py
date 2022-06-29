@@ -60,7 +60,7 @@ with sr.Microphone() as source:
        r.energy_threshold = 500 
        r.dynamic_energy_threshold = False
 
-# Audio to String
+# Audio to String (change)
 def record_audio():
     with sr.Microphone() as source:
         r.pause_threshold = 0.8
