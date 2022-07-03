@@ -297,7 +297,58 @@ def respond(voice_data):
            reply("I already have a girlfriend")
            
     elif "wikipedia" in voice_data:
-            webbrowser.open("wikipedia.com")         
+            webbrowser.open("wikipedia.com")      
+
+    elif 'news' in voice_data or 'headlines' in voice_data :
+            news = webbrowser.open_new_tab("https://timesofindia.indiatimes.com/home/headlines")
+            reply('Here are some headlines from the Times of India,Happy reading')
+            time.sleep(6)
+
+    elif "log off" in voice_data or "sign out" in voice_data:
+            reply("Ok , your pc will log off in 10 sec make sure you exit from all applications")
+            subprocess.call(["shutdown", "/l"])
+    
+    elif "weather" in voice_data:
+            api_key="8ef61edcf1c576d65d836254e11ea420"
+            base_url="https://api.openweathermap.org/data/2.5/weather?"
+            reply("whats the city name")
+            city_name=record_audio()
+            respond(city_name)
+            complete_url=base_url+"appid="+api_key+"&q="+city_name
+            response = requests.get(complete_url)
+            x=response.json()
+            if x["cod"]!="404":
+                y=x["main"]
+                current_temperature = y["temp"]
+                current_humidiy = y["humidity"]
+                z = x["weather"]
+                weather_description = z[0]["description"]
+                reply(" Temperature in kelvin unit is " +
+                      str(current_temperature) +
+                      "\n humidity in percentage is " +
+                      str(current_humidiy) +
+                      "\n description  " +
+                      str(weather_description))
+                print(" Temperature in kelvin unit = " +
+                      str(current_temperature) +
+                      "\n humidity (in percentage) = " +
+                      str(current_humidiy) +
+                      "\n description = " +
+                      str(weather_description))
+
+    elif 'location' in voice_data:
+        reply('Which place are you looking for ?')
+        temp_audio = record_audio()
+        app.eel.addUserMsg(temp_audio)
+        reply('Locating...')
+        url = 'https://google.nl/maps/place/' + temp_audio + '/&amp;'
+        try:
+            webbrowser.get().open(url)
+            reply('This is what I found Sir')
+        except:
+            reply('Please check your Internet')
+
+    
     else: 
         if master_control and voice_data == "":
             pass
