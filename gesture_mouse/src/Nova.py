@@ -143,6 +143,7 @@ def respond(voice_data):
             Gesture_Controller.GestureController.gc_mode = 0
         app.ChatBot.close()
         sys.exit()
+    #divya
         
     
     # DYNAMIC CONTROLS
