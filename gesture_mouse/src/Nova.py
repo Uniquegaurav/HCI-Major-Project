@@ -134,11 +134,11 @@ def respond(voice_data):
         except:
             reply('Please check your Internet')
 
-    elif ('bye' in voice_data) or ('by' in voice_data):
+    elif any(value in voice_data for value in BYE) or master_control:
         reply("Good bye! Have a nice day.")
         is_awake = False
 
-    elif ('exit' in voice_data) or ('terminate' in voice_data):
+    elif any(value in voice_data for value in EXIT) or master_control:
         if Gesture_Controller.GestureController.gc_mode:
             Gesture_Controller.GestureController.gc_mode = 0
         app.ChatBot.close()
@@ -146,7 +146,7 @@ def respond(voice_data):
         
     
     # DYNAMIC CONTROLS
-    elif 'launch gesture recognition' in voice_data:
+    if any(value in voice_data for value in LAUNCH) or master_control:
         if Gesture_Controller.GestureController.gc_mode:
             reply('Gesture recognition is already active')
         else:
@@ -155,7 +155,7 @@ def respond(voice_data):
             t.start()
             reply('Launched Successfully')
 
-    elif 'stop gesture recognition' in voice_data:
+    elif any(value in voice_data for value in STOP) or master_control:
         if Gesture_Controller.GestureController.gc_mode:
             Gesture_Controller.GestureController.gc_mode = 0
             reply('Gesture recognition Stopped')
@@ -168,7 +168,7 @@ def respond(voice_data):
             keyboard.release('c')
         reply('Copied')
           
-    elif 'page' in voice_data or 'pest'  in voice_data or 'paste' in voice_data:
+    elif any(value in voice_data for value in PASTE) or master_control:
         with keyboard.pressed(Key.ctrl):
             keyboard.press('v')
             keyboard.release('v')
@@ -264,7 +264,7 @@ def respond(voice_data):
     #     pyttsx3.speak("Slack")
     #     os.system("Slack")
 
-    elif 'how are you' in voice_data:
+    elif any(value in voice_data for value in Okay) or master_control:
             reply("I am fine, Thank you")
             reply("How are you, Sir")
             
@@ -272,10 +272,10 @@ def respond(voice_data):
             reply("A warm good morning")
             reply("How are you")
             
-    elif 'fine' in voice_data or "good" in voice_data:
+    elif any(value in voice_data for value in FINE) or master_control:
             reply("It's good to know that your fine")
              
-    elif "who made you" in voice_data or "who created you" in voice_data:
+    elif any(value in voice_data for value in CREATION) or master_control:
             reply("I have been created by Team major including Gaurav Divya and Chaitra")
             
     elif 'joke' in voice_data:
@@ -299,12 +299,12 @@ def respond(voice_data):
     elif "wikipedia" in voice_data:
             webbrowser.open("wikipedia.com")      
 
-    elif 'news' in voice_data or 'headlines' in voice_data :
+    elif any(value in voice_data for value in NEWS) or master_control:
             news = webbrowser.open_new_tab("https://timesofindia.indiatimes.com/home/headlines")
             reply('Here are some headlines from the Times of India,Happy reading')
             time.sleep(6)
 
-    elif "log off" in voice_data or "sign out" in voice_data:
+    elif any(value in voice_data for value in SHUTDOWN) or master_control:
             reply("Ok , your pc will log off in 10 sec make sure you exit from all applications")
             subprocess.call(["shutdown", "/l"])
     
@@ -335,18 +335,6 @@ def respond(voice_data):
                       str(current_humidiy) +
                       "\n description = " +
                       str(weather_description))
-
-    elif 'location' in voice_data:
-        reply('Which place are you looking for ?')
-        temp_audio = record_audio()
-        app.eel.addUserMsg(temp_audio)
-        reply('Locating...')
-        url = 'https://google.nl/maps/place/' + temp_audio + '/&amp;'
-        try:
-            webbrowser.get().open(url)
-            reply('This is what I found Sir')
-        except:
-            reply('Please check your Internet')
 
     
     else: 
