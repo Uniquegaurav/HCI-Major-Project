@@ -304,9 +304,10 @@ def respond(voice_data):
             reply('Here are some headlines from the Times of India,Happy reading')
             time.sleep(6)
 
-    elif any(value in voice_data for value in SHUTDOWN) or master_control:
-            reply("Ok , your pc will log off in 10 sec make sure you exit from all applications")
-            subprocess.call(["shutdown", "/l"])
+    #elif "log off" in voice_data or "sign out" in voice_data:
+    #       reply("Ok , your pc will log off in 10 sec make sure you exit from all applications")
+    #       subprocess.call(["shutdown", "/l"])
+
     
     elif "weather" in voice_data:
             api_key="8ef61edcf1c576d65d836254e11ea420"
